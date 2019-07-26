@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
+import api from '../services/api';
 
 import './Dash.css';
+import Modal from './../components/Dialog';
 
 import logo from '../assets/light/logo.svg';
-import new_c from '../assets/light/new_col.svg';
 import twitter from '../assets/twitter.svg';
 import media from '../assets/satellite.svg';
 
 class Dash extends Component {
+
+    state = {
+        feed : [],
+    };
+
+    async componentDidMount() {
+        const response = await api.get('collections/?format=json');
+
+        this.setState({feed: response.data});
+    }
+
     render() {
         return (
             <div className="dash">
@@ -17,44 +29,32 @@ class Dash extends Component {
                             <img className="btn" src={logo} alt="Culture Hack Network"/>
                         </div>
                         <div>
-                            <img className="btn" src={new_c} alt="Sign up"/>
+                            <Modal />
                         </div>
                         
                     </div>
                 </header>
 
                 <section id="dash-content">
-                    <article>
-                        <div className="collect-header">
-                            <span><img className="c-icons" src={twitter} alt="Type" /></span>
-                            <a href="#" ><strong>Fees must fall</strong></a>
-                        </div>
-                        <div className="collect-info">
-                            <span>September 2018 - November 2018</span>
-                            <a href="#" class="btn">
-                            <span class="glyphicon arrow-thin-down"></span> Download
-                            </a>
-                            <a href="#">
-                            <span class="glyphicon glyphicon-option-vertical"></span>
-                            </a>
-                        </div>
-                    </article>
 
-                    <article>
-                        <div className="collect-header">
-                            <span><img className="c-icons" src={media} alt="Type" /></span>
-                            <a href="#" ><strong>Fees must fall</strong></a>
-                        </div>
-                        <div className="collect-info">
-                            <span>September 2018 - November 2018</span>
-                            <a href="#" class="btn">
-                            <span class="glyphicon arrow-thin-down"></span> Download
-                            </a>
-                            <a href="#">
-                            <span class="glyphicon glyphicon-option-vertical"></span>
-                            </a>
-                        </div>
-                    </article>
+                    {this.state.feed.map(collect => (
+                        <article className={collect.is_done === true?'':'shadow'}>
+                            <div className="collect-header">
+                                <span><img className="c-icons" src={collect.collection_type === 'twitter'? twitter:media} alt="Type" /></span>
+                                <a ><strong>{collect.query}</strong></a>
+                            </div>
+                            <div className="collect-info">
+                                <span>{collect.periodStart} - {collect.periodEnd}</span>
+                                <a class="btn-dash">
+                                <span class="glyphicon glyphicon-arrow-down"></span> Download Data
+                                </a>
+                                <a style={{'pointer-events':'auto'}}>
+                                <span class="glyphicon glyphicon-option-vertical" ></span>
+                                </a>
+                            </div> 
+                        </article>
+
+                    ))}
                 </section>
             </div>
         );

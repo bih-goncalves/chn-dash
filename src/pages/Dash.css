@@ -46,4 +46,17 @@ section#dash-content article {
 
 .collect-header span{
     margin: 10px;
+    color: rgba(18, 56, 104,1);
+}
+.shadow {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.btn-dash {
+    border: 1px solid #555AF6;
+    border-radius: 20px;
+    padding: 8px 10px;
+    margin:0 10px 0 30px;
+    color: #555AF6;
 }
