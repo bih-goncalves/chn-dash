@@ -1,0 +1,19 @@
+.MuiDialog-paperWidthSm {
+    max-width: 100%;
+
+}
+
+.MuiDialog-paperScrollPaper {
+    display: flex;
+    height:100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.btn-sel {
+    border: none;
+    padding: 10px;
+    background: transparent;
+    margin-right: 15px;
+    color:#555AF6;
+}
