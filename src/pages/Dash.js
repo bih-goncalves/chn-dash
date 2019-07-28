@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import api from '../services/api';
 
 import './Dash.css';
-import Modal from './../components/Dialog';
+import NCollect from './NCollect';
 
 import logo from '../assets/light/logo.svg';
 import twitter from '../assets/twitter.svg';
 import media from '../assets/satellite.svg';
 
 class Dash extends Component {
-
     state = {
-        feed : [],
-    };
+        feed: [],
+        narrative: 'narrativa1',
+    }
 
     async componentDidMount() {
         const response = await api.get('collections/?format=json');
 
         this.setState({feed: response.data});
+        //pegar a narrativa dessa request
     }
 
     render() {
@@ -29,7 +30,7 @@ class Dash extends Component {
                             <img className="btn" src={logo} alt="Culture Hack Network"/>
                         </div>
                         <div>
-                            <Modal />
+                            <NCollect narrative={this.state.narrative}/>
                         </div>
                         
                     </div>
@@ -38,18 +39,18 @@ class Dash extends Component {
                 <section id="dash-content">
 
                     {this.state.feed.map(collect => (
-                        <article className={collect.is_done === true?'':'shadow'}>
+                        <article className={collect.isDone === true?'':'shadow'} key={collect.query}>
                             <div className="collect-header">
                                 <span><img className="c-icons" src={collect.collection_type === 'twitter'? twitter:media} alt="Type" /></span>
                                 <a ><strong>{collect.query}</strong></a>
                             </div>
                             <div className="collect-info">
                                 <span>{collect.periodStart} - {collect.periodEnd}</span>
-                                <a class="btn-dash">
-                                <span class="glyphicon glyphicon-arrow-down"></span> Download Data
+                                <a className="btn-dash">
+                                <span className="glyphicon glyphicon-arrow-down"></span> Download Data
                                 </a>
                                 <a style={{'pointer-events':'auto'}}>
-                                <span class="glyphicon glyphicon-option-vertical" ></span>
+                                <span className="glyphicon glyphicon-option-vertical" ></span>
                                 </a>
                             </div> 
                         </article>
