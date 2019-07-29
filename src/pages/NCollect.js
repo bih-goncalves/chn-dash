@@ -65,10 +65,10 @@ class NCollect extends Component {
                         <p>
                             Date range* <span className="opaco" >(max 31 Days)</span>
                             <br></br>
-                            <input type="text" name="periodStart" className="form-text" 
+                            <input type="date" name="periodStart" className="form-text" 
                             placeholder="Start date" style={{'width':'48%'}}
                             onChange={e => this.setState({ periodStart: e.target.value })} />
-                            <input type="text" name="periodEnd" className="form-text" 
+                            <input type="date" name="periodEnd" className="form-text" 
                             placeholder="End date" style={{'width':'48%'}}
                             onChange={e => this.setState({ periodEnd: e.target.value })} />
                         </p>
