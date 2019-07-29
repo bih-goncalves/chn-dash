@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Form, Container } from "./styles";
 
-class Register extends Component {
+class SignUp extends Component {
   state = {
     email: "",
     password: "",
@@ -43,7 +43,7 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default SignUp;
 
 // // De
 // import { Link } from "react-router-dom";

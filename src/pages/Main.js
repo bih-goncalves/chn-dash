@@ -15,7 +15,7 @@ class Main extends Component {
                         <img src={logo} alt="Culture Hack Network"/>
                         <div>
                             <a href="/login" className="btn" ><img src={log_in} alt="Log in"/></a>
-                            <a href="/register" className="btn" ><img src={sign_up} alt="Sign up"/></a>
+                            <a href="/signup" className="btn" ><img src={sign_up} alt="Sign up"/></a>
                         </div>
                     </div>
                 </header>

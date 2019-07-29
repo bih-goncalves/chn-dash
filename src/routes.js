@@ -5,7 +5,7 @@ import { isAuthenticated } from "./services/auth";
 import Main from './pages/Main';
 import Dash from './pages/Dash';
 import Login from './pages/SignIn/Login';
-import Register from './pages/SignUp/Register';
+import Signup from './pages/SignUp/Signup';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -27,7 +27,7 @@ const Routes = () => {
         <Switch>
             <Route path="/" exact component={Main} />
             <Route path="/dash" component={Dash} />
-            <Route path="/register" component={Register} />
+            <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
         </Switch>
         </BrowserRouter>
