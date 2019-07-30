@@ -10,7 +10,6 @@ import new_c from '../assets/light/new_col.svg';
 class NCollect extends Component {
 
     state = {
-        show: 'none',
         query:'',
         narrative: this.props.narrative,
         periodStart:'',
@@ -19,12 +18,12 @@ class NCollect extends Component {
         isDone:false
     }
 
-    showleft = () => {
-        this.setState({show : 'block'})
+    showleft = (show) => {
+        show = 'block';
     }
 
-    esconder = () => {
-        this.setState({show : 'none'})
+    esconder = (show) => {
+        show = 'none';
     }
 
     handleSubmit() {
@@ -33,19 +32,21 @@ class NCollect extends Component {
       }
 
     render() {
+        let show = 'none';
+
         return (
             <div>
-                <button onClick={this.showleft}  className="btn">
+                <button onClick={this.showleft(show)}  className="btn">
                 <img src={new_c} alt="Create new collection"/>
                 </button>
 
-                <div className="collect-form" style={{'display':this.state.show}}>
+                <div className="collect-form" style={{'display':show}}>
 
                     <div className="menu-content">
                         <div className="menu-title">
                             Create a Collection
                         </div>
-                        <button onClick={this.esconder} className="close">
+                        <button onClick={this.esconder(show)} className="close">
                         <img src={x_button}  alt="Close"/></button>
 
                     <form onSubmit={this.handleSubmit}>
