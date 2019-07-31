@@ -11,7 +11,7 @@ import media from '../assets/satellite.svg';
 class Dash extends Component {
     state = {
         feed: [],
-        narrative: 'narrativa1',
+        narrative: 2,
     }
 
     async componentDidMount() {
@@ -49,7 +49,7 @@ class Dash extends Component {
                                 <a className="btn-dash">
                                 <span className="glyphicon glyphicon-arrow-down"></span> Download Data
                                 </a>
-                                <a style={{'pointer-events':'auto'}}>
+                                <a style={{pointerEvents:'auto'}}>
                                 <span className="glyphicon glyphicon-option-vertical" ></span>
                                 </a>
                             </div> 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import api from '../services/api';
 
 import './NCollect.css'
@@ -10,6 +11,7 @@ import new_c from '../assets/light/new_col.svg';
 class NCollect extends Component {
 
     state = {
+        show: 'none',
         query:'',
         narrative: this.props.narrative,
         periodStart:'',
@@ -18,60 +20,75 @@ class NCollect extends Component {
         isDone:false
     }
 
-    showleft = (show) => {
-        show = 'block';
+    showleft = () => {
+        this.setState({ show : 'block' });
     }
 
-    esconder = (show) => {
-        show = 'none';
+    esconder = () => {
+        this.setState({show : 'none' });
     }
 
-    handleSubmit() {
+    handleSubmit = (e) => {
+        e.preventDefault();
+        var req = Object.assign({},this.state);
+        delete req['show'];
 
-        alert(this.state);
+        api.post('collections/',req)
+        .then(function(response){
+            console.log(response);
+            
+          })
+        .catch(function(error) { 
+            console.log(error);
+        }); 
+
       }
 
+    changeHandler = (e) => {
+        this.setState({
+            [e.target.name]:e.target.value
+        });
+    }
+
     render() {
-        let show = 'none';
 
         return (
             <div>
-                <button onClick={this.showleft(show)}  className="btn">
+                <button onClick={this.showleft}  className="btn">
                 <img src={new_c} alt="Create new collection"/>
                 </button>
 
-                <div className="collect-form" style={{'display':show}}>
+                <div className="collect-form" style={{'display':this.state.show}}>
 
                     <div className="menu-content">
                         <div className="menu-title">
                             Create a Collection
                         </div>
-                        <button onClick={this.esconder(show)} className="close">
+                        <button onClick={this.esconder} className="close">
                         <img src={x_button}  alt="Close"/></button>
 
                     <form onSubmit={this.handleSubmit}>
                         <div className="new-collect">
-                        <p>Collection Source* <span className="opaco" >(See data from Twitter or News Media)</span>
+                        Collection Source* <span className="opaco" >(See data from Twitter or News Media)</span>
                         <br></br>
 
-                        <div class="switch-field">
+                        <div className="switch-field">
                             <input type="radio" id="radio-one" name="collection_type" value="twitter"
-                            checked={this.state.collection_type === 'twitter'} onChange={e => this.setState({ collection_type: e.target.value })} />
-                            <label for="radio-one"><img src={twitter} alt="Type" /> Twitter</label>
+                            checked={this.state.collection_type === 'twitter'} onChange={ this.changeHandler } />
+                            <label htmlFor="radio-one"><img src={twitter} alt="Type" /> Twitter</label>
                             <input type="radio" id="radio-two" name="collection_type" value="media" 
-                            checked={this.state.collection_type === 'media'} onChange={e => this.setState({ collection_type: e.target.value })} />
-                            <label for="radio-two"><img src={media} alt="Type" /> Media</label>
+                            checked={this.state.collection_type === 'media'} onChange={ this.changeHandler } />
+                            <label htmlFor="radio-two"><img src={media} alt="Type" /> Media</label>
                         </div>
-                        </p>
                         <p>
                             Date range* <span className="opaco" >(max 31 Days)</span>
                             <br></br>
                             <input type="date" name="periodStart" className="form-text" 
                             placeholder="Start date" style={{'width':'48%'}}
-                            onChange={e => this.setState({ periodStart: e.target.value })} />
+                            onChange={ this.changeHandler } />
                             <input type="date" name="periodEnd" className="form-text" 
                             placeholder="End date" style={{'width':'48%'}}
-                            onChange={e => this.setState({ periodEnd: e.target.value })} />
+                            onChange={ this.changeHandler } />
                         </p>
 
                         <p>
@@ -79,7 +96,7 @@ class NCollect extends Component {
                             <br></br>
                             <input type="text" name="query" className="form-text" 
                             placeholder="Add keyword or phrase..." style={{'width':'98%'}}
-                            onChange={e => this.setState({ query: e.target.value })} />
+                            onChange={ this.changeHandler } />
                         </p>
                         </div>
                         <button type="submit" className="menu-bottom" >Create Collection</button>

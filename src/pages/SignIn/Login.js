@@ -52,7 +52,7 @@ class SignIn extends Component {
             onChange={e => this.setState({ password: e.target.value })}
           />
           <button type="submit">Log in</button>
-          <hr />
+          <br />
           <Link to="/signup" type="button">Sign up</Link>
         </Form>
       </Container>
