@@ -44,6 +44,10 @@ section#dash-content article {
     justify-content: space-between;
 }
 
+.collect-header {
+    cursor: pointer;
+}
+
 .collect-header span{
     margin: 10px;
     color: rgba(18, 56, 104,1);
@@ -59,4 +63,5 @@ section#dash-content article {
     padding: 8px 10px;
     margin:0 10px 0 30px;
     color: #555AF6;
+    cursor: pointer;
 }
