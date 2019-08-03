@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from "./auth";
+// import { getToken } from "./auth";
 
 const api = axios.create({
     baseURL: 'https://django-app-1-247014.appspot.com/',

@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore , applyMiddleware} from 'redux';
+import api from '../services/api';
 
 const INITIAL_STATE = {
     user: {
@@ -18,10 +19,11 @@ const INITIAL_STATE = {
 function reducer(state = INITIAL_STATE, action) {
     switch(action.type) {
         case 'NEW_COLLECT':
-            console.log(action.req);
+            api.post('collections/',action.req);
+            break;
+        default:
             break;
     }
-
     return state;
 }
 

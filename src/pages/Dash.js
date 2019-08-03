@@ -15,7 +15,9 @@ const Dash = ({ feed , user, dispatch}) => (
             <div className="header-content">
                 <div>
                     <img className="btn" src={logo} alt="Culture Hack Network"/>
-                    </div><div>
+                </div>
+                <div>
+                    {/* colocando selector */}
                 </div>
                 <div>
                     <NCollect onSubmit={dispatch}/>
