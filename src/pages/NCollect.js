@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import api from '../services/api';
 
 import './NCollect.css'
 import twitter from '../assets/twitter.svg';
@@ -26,6 +25,7 @@ class NCollect extends Component {
             this.setState({show: 'none'})
         } 
     }
+}
 
     changeHandler = (e) => {
         let name = e.target.name
@@ -47,6 +47,7 @@ class NCollect extends Component {
         }
         
     }
+}
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -68,7 +69,7 @@ class NCollect extends Component {
                 <img src={new_c} alt="Create new collection"/>
                 </button>
 
-                <div className="collect-form" style={{'display':this.state.show}}>
+        <div className="collect-form" style={{'display':newC.show}}>
 
                     <div className="menu-content">
                         <div className="menu-title">
@@ -114,9 +115,28 @@ class NCollect extends Component {
 
                     </div>
                 </div>
+                <p>
+                    Date range* <span className="opaco" >(max 31 Days)</span>
+                    <br></br>
+                    <input type="date" name="periodStart" className="form-text" 
+                    placeholder="Start date" style={{'width':'48%'}} />
+                    <input type="date" name="periodEnd" className="form-text" 
+                    placeholder="End date" style={{'width':'48%'}} />
+                </p>
+
+                <p>
+                    Keyword or phrase* <span className="opaco" >(max 3)</span>
+                    <br></br>
+                    <input type="text" name="query" className="form-text" 
+                    placeholder="Add keyword or phrase..." style={{'width':'98%'}} />
+                </p>
+                </div>
+                <button type="submit" className="menu-bottom" >Create Collection</button>
+            </form>
+
             </div>
-        );
-    }
-}
+        </div>
+    </div>
+)
 
 export default NCollect;

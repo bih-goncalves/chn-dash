@@ -9,13 +9,6 @@ import logo from '../assets/light/logo.svg';
 import twitter from '../assets/twitter.svg';
 import media from '../assets/satellite.svg';
 
-function novaColeta (form) {
-    return {
-        type: 'NEW_COLLECT',
-        form
-    }
-}
-
 const Dash = ({ feed , user, dispatch}) => (
     <div className="dash">
         <header id="dash-header">
