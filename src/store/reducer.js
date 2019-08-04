@@ -30,6 +30,17 @@ export default function reducer(state = INITIAL_STATE, action) {
                     curNarrative: action.data[0].id,
                 }
             };
+        case 'CHANGE_N':
+            return {
+                ...state,
+                feed:{
+                    ...state.feed, curNarrative: action.data
+                }
+            }
+        case 'CHANGE_C':
+            return {
+
+            }
         default:
             return state;
     }

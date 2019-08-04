@@ -1,9 +1,8 @@
-.select-box--arrow {
-    width: 30px;
-    height: 30px;
+.narrative-selector {
+    width: 200px;
     margin:0;
     padding: 0;
     display: inline;
-    background: #aaa;
+    background: transparent;
     cursor: pointer;
 }
