@@ -22,7 +22,7 @@ const Dash = ({ feed , user, dispatch}) => (
                     {/* colocando selector */}
                 </div>
                 <div>
-                    <NCollect onSubmit={dispatch}/>
+                    <NCollect onSubmit={dispatch} narrative={feed.curNarrative}/>
                 </div>
                 
             </div>

@@ -14,7 +14,7 @@ class NCollect extends Component {
         narrative: this.props.narrative,
         periodStart:'',
         periodEnd:'',
-        collection_type:'twitter',
+        collectionType:'twitter',
         isDone:false
     }
 
@@ -32,7 +32,7 @@ class NCollect extends Component {
 
         switch (name) {
             case 'collection_type':
-                this.setState({collection_type: value})
+                this.setState({collectionType: value})
                 break;
             case 'periodStart':
                 this.setState({periodStart: value})
@@ -56,7 +56,7 @@ class NCollect extends Component {
         
         this.showLeft();
         this.props.onSubmit({
-            type: 'NEW_COLLECT',
+            type: 'NEW_COLLECTION',
             req
         });
       }
@@ -84,11 +84,11 @@ class NCollect extends Component {
                         <br></br>
 
                         <div className="switch-field">
-                            <input type="radio" id="radio-one" name="collection_type" value="twitter"
-                            checked={this.state.collection_type === 'twitter'} onChange={ this.changeHandler } />
+                            <input type="radio" id="radio-one" name="collectionType" value="twitter"
+                            checked={this.state.collectionType === 'twitter'} onChange={ this.changeHandler } />
                             <label htmlFor="radio-one"><img src={twitter} alt="Type" /> Twitter</label>
-                            <input type="radio" id="radio-two" name="collection_type" value="media" 
-                            checked={this.state.collection_type === 'media'} onChange={ this.changeHandler } />
+                            <input type="radio" id="radio-two" name="collectionType" value="media" 
+                            checked={this.state.collectionType === 'media'} onChange={ this.changeHandler } />
                             <label htmlFor="radio-two"><img src={media} alt="Type" /> Media</label>
                         </div>
                         <p>

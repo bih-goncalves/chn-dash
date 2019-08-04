@@ -15,14 +15,14 @@ const INITIAL_STATE = {
 
 export default function reducer(state = INITIAL_STATE, action) {
     switch(action.type) {
-        case 'ADD_COLLECTION':
+        case 'GET_C':
             return {
                 ...state,
                 feed: {
                     ...state.feed, collections: action.data
                 }
             };
-        case 'ADD_NARRATIVE':
+        case 'GET_N':
             return {
                 ...state,
                 feed: {
