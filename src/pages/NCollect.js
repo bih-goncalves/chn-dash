@@ -31,7 +31,7 @@ class NCollect extends Component {
         let value = e.target.value
 
         switch (name) {
-            case 'collection_type':
+            case 'collectionType':
                 this.setState({collectionType: value})
                 break;
             case 'periodStart':

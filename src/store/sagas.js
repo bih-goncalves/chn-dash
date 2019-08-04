@@ -10,7 +10,6 @@ function* asyncGetCollections(action) {
 
 function* asyncGetNarratives(action) {
     const data = yield api.get('narratives/?format=json');
-    
     yield put({ type: 'GET_N', data: data.data });
 }
 
@@ -41,7 +40,7 @@ function* asyncNewNarrative(action) {
     });
 
     if (data === 'success'){
-        yield put({ type: 'GET_COLLECTIONS'})
+        yield put({ type: 'GET_NARRATIVES'})
     }
 }
 
