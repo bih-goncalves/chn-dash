@@ -1,0 +1,9 @@
+.select-box--arrow {
+    width: 30px;
+    height: 30px;
+    margin:0;
+    padding: 0;
+    display: inline;
+    background: #aaa;
+    cursor: pointer;
+}

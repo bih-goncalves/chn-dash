@@ -65,3 +65,12 @@ section#dash-content article {
     color: #555AF6;
     cursor: pointer;
 }
+.head-left {
+    display:flex;
+    align-items: center;
+}
+.head-right {
+    display:flex;
+    align-items: center;
+    padding-right: 3%;
+}

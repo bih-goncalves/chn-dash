@@ -5,7 +5,7 @@ import './Dash.css';
 import NCollect from './NCollect';
 // import * as ApiActions from '../store/actions';
 // <button onClick={() => dispatch(ApiActions.getCollections(feed.curNarrative))}>Clica aqui</button>
-//import SelectBox from '../components/Select';
+import SelectBox from '../components/Select';
 
 import logo from '../assets/light/logo.svg';
 import twitter from '../assets/twitter.svg';
@@ -15,14 +15,15 @@ const Dash = ({ feed , user, dispatch}) => (
     <div className="dash">
         <header id="dash-header">
             <div className="header-content">
-                <div>
-                    <img className="btn" src={logo} alt="Culture Hack Network"/>
+                <div className="head-left">
+                    <img src={logo} alt="Culture Hack Network"/>
+
+                    <SelectBox/>
                 </div>
-                <div>
-                    {/* colocando selector */}
-                </div>
-                <div>
+                
+                <div className="head-right">
                     <NCollect onSubmit={dispatch} narrative={feed.curNarrative}/>
+                    {user.username}
                 </div>
                 
             </div>
