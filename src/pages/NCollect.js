@@ -11,7 +11,6 @@ class NCollect extends Component {
     state = {
         show: 'none',
         query:'',
-        narrative: this.props.narrative,
         periodStart:'',
         periodEnd:'',
         collectionType:'twitter',
@@ -53,12 +52,21 @@ class NCollect extends Component {
         e.preventDefault();
         var req = Object.assign({},this.state);
         delete req['show'];
-        
-        this.showLeft();
+
         this.props.onSubmit({
             type: 'NEW_COLLECTION',
             req
         });
+
+        // reset state
+        this.setState({
+            show: 'none',
+            query:'',
+            periodStart:'',
+            periodEnd:'',
+            collectionType:'twitter',
+            isDone:false
+        })
       }
 
     render() {
@@ -95,19 +103,19 @@ class NCollect extends Component {
                             Date range* <span className="opaco" >(max 31 Days)</span>
                             <br></br>
                             <input type="date" name="periodStart" className="form-text" 
-                            placeholder="Start date" style={{'width':'48%'}}
-                            onChange={ this.changeHandler } />
+                            placeholder="Start date" style={{'width':'48%'}} value={this.state.periodStart}
+                            onChange={ this.changeHandler } required/>
                             <input type="date" name="periodEnd" className="form-text" 
-                            placeholder="End date" style={{'width':'48%'}}
-                            onChange={ this.changeHandler } />
+                            placeholder="End date" style={{'width':'48%'}} value={this.state.periodEnd}
+                            onChange={ this.changeHandler } required/>
                         </p>
 
                         <p>
                             Keyword or phrase* <span className="opaco" >(max 3)</span>
                             <br></br>
-                            <input type="text" name="query" className="form-text" 
+                            <input type="text" name="query" className="form-text" value={this.state.query}
                             placeholder="Add keyword or phrase..." style={{'width':'98%'}}
-                            onChange={ this.changeHandler } />
+                            onChange={ this.changeHandler } required/>
                         </p>
                         </div>
                         <button type="submit" className="menu-bottom" >Create Collection</button>

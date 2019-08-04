@@ -16,13 +16,13 @@ const Dash = ({ feed , user, dispatch}) => (
         <header id="dash-header">
             <div className="header-content">
                 <div className="head-left">
-                    <img src={logo} alt="Culture Hack Network"/>
+                    <a href="/" ><img src={logo} alt="Culture Hack Network"/></a>
 
                     <SelectBox/>
                 </div>
                 
                 <div className="head-right">
-                    <NCollect onSubmit={dispatch} narrative={feed.curNarrative}/>
+                    <NCollect onSubmit={dispatch}/>
                     {user.username}
                 </div>
                 
@@ -32,7 +32,7 @@ const Dash = ({ feed , user, dispatch}) => (
         <section id="dash-content">
 
             {feed.collections.map(collect => (
-                <article className={collect.isDone === true?'':'shadow'} key={collect.query}>
+                <article className={collect.isDone === true?'':'shadow'} key={collect.id}>
                     <div className="collect-header">
                         <span><img className="c-icons" src={collect.collection_type === 'twitter'? twitter:media} alt="Type" /></span>
                         <strong>{collect.query}</strong>

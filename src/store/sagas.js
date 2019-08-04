@@ -1,5 +1,6 @@
 import { takeLatest, put, all } from 'redux-saga/effects';
 import api from '../services/api';
+import store from './index';
 
 // get functions without narrative ID
 function* asyncGetCollections(action) {
@@ -15,6 +16,9 @@ function* asyncGetNarratives(action) {
 
 // post functions without narrative ID
 function* asyncNewCollection(action) {
+    const narrative = store.getState().reducer.feed.curNarrative;
+    action.req.narrative=narrative;
+
     const data = yield api.post('collections/',action.req)
     .then(function(response) {
         return 'success'
