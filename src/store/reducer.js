@@ -5,7 +5,7 @@ const INITIAL_STATE = {
         token: 'shdakjahsk'
     },
     feed: {
-        curNarrative:2,
+        curNarrative:0,
         curCollection:{},
         narratives:[],
         collections:[],
@@ -26,12 +26,10 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 feed: {
-                    ...state.feed, narratives: action.data
+                    ...state.feed, narratives: action.data,
+                    curNarrative: action.data[0].id,
                 }
             };
-        case 'NEW_COLLECT':
-            console.log(action.req);
-            break;
         default:
             return state;
     }

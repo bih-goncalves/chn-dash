@@ -4,3 +4,9 @@ export function getCollections (narrative) {
         narrative,
     }
 }
+
+export function getNarratives () {
+    return {
+        type:'GET_NARRATIVES',
+    }
+}

@@ -14,5 +14,14 @@ const store = createStore(
 );
 
 sagaMiddleware.run(rootSaga);
+// load narratives
+store.dispatch({
+    type:'GET_NARRATIVES'
+});
+// load first narrative collections
+store.dispatch({
+    type:'GET_COLLECTIONS',
+    narrative:store.getState().reducer.feed.curNarrative
+})
 
 export default store;
