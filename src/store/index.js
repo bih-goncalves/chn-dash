@@ -1,32 +1,18 @@
-import { createStore , applyMiddleware} from 'redux';
-import api from '../services/api';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-const INITIAL_STATE = {
-    user: {
-        username: 'B',
-        id: 1,
-        token: 'shdakjahsk'
-    },
-    feed: {
-        curNarrative:{},
-        curCollection:{},
-        narratives:[],
-        collections:[],
-    },
-    newC: {},
-};
+import reducer from './reducer';
+import rootSaga from './sagas';
 
-function reducer(state = INITIAL_STATE, action) {
-    switch(action.type) {
-        case 'NEW_COLLECT':
-            api.post('collections/',action.req);
-            break;
-        default:
-            break;
-    }
-    return state;
-}
+const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducer);
+const store = createStore(
+    combineReducers({
+        reducer,
+    }),
+    applyMiddleware(sagaMiddleware),
+);
+
+sagaMiddleware.run(rootSaga);
 
 export default store;

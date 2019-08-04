@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import './Dash.css';
 import NCollect from './NCollect';
+// import * as ApiActions from '../store/actions';
+// <button onClick={() => dispatch(ApiActions.getCollections(feed.curNarrative))}>Clica aqui</button>
 //import SelectBox from '../components/Select';
 
 import logo from '../assets/light/logo.svg';
@@ -32,7 +34,7 @@ const Dash = ({ feed , user, dispatch}) => (
                 <article className={collect.isDone === true?'':'shadow'} key={collect.query}>
                     <div className="collect-header">
                         <span><img className="c-icons" src={collect.collection_type === 'twitter'? twitter:media} alt="Type" /></span>
-                        <a ><strong>{collect.query}</strong></a>
+                        <strong>{collect.query}</strong>
                     </div>
                     <div className="collect-info">
                         <span>{collect.periodStart} - {collect.periodEnd}</span>
@@ -50,4 +52,4 @@ const Dash = ({ feed , user, dispatch}) => (
     </div>
 )
 
-export default connect(state => ({ feed: state.feed, user: state.user }))(Dash);
+export default connect(state => ({ feed: state.reducer.feed, user: state.reducer.user }))(Dash);

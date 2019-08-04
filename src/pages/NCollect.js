@@ -43,6 +43,8 @@ class NCollect extends Component {
             case 'query':
                 this.setState({query: value})
                 break;
+            default:
+                break;
         }
         
     }

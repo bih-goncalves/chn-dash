@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+// Redirect
 // import { isAuthenticated } from "./services/auth";
 import Main from './pages/Main';
 import Dash from './pages/Dash';

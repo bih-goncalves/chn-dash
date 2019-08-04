@@ -8,11 +8,11 @@ import store from './store';
 function App() {
   return (
     <div className="App">
+    <Provider store={store}>
       <BrowserRouter>
-        <Provider store={store}>
           <Routes />
-        </Provider>
       </BrowserRouter>
+    </Provider>
     </div>
   );
 }
