@@ -1,0 +1,49 @@
+.graph {
+    background: #F1F4F8;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+.btn-dash {
+    border: 1px solid #555AF6;
+    border-radius: 20px;
+    padding: 8px 10px;
+    margin:0 10px 0 30px;
+    color: #555AF6;
+    cursor: pointer;
+}
+
+header#dash-header {
+    background: #fff;
+    height: 80px;
+    border-bottom: 1px solid #DDD;
+}
+
+section#graph-content {
+    position: relative;
+    align-content: flex-start;
+    padding: 2% 14% 4% 20%;
+}
+.graph-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.graph-header button {
+    background: transparent;
+    border: none;
+    padding: 5px 10px 5px 10px;
+}
+
+.grafo {
+    width: 100%;
+    height: auto;
+    background: #fff;
+}

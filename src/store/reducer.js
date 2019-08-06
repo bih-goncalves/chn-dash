@@ -10,7 +10,10 @@ const INITIAL_STATE = {
         narratives:[],
         collections:[],
     },
-    newC: {},
+    grafo: {
+        data:{},
+        layout:{}
+    },
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -39,7 +42,15 @@ export default function reducer(state = INITIAL_STATE, action) {
             }
         case 'CHANGE_C':
             return {
-
+                ...state,
+                feed:{
+                    ...state.feed, curCollection: action.data
+                }
+            }
+        case 'CHANGE_GRAFO':
+            return {
+                ...state,
+                grafo: action.payload
             }
         default:
             return state;

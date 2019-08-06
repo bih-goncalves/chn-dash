@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import Dash from './pages/Dash';
 import Login from './pages/SignIn/Login';
 import Signup from './pages/SignUp/Signup';
+import Graph from './pages/Graph/Graph';
 
 // const PrivateRoute = ({ component: Component, ...rest }) => (
 //     <Route
@@ -29,6 +30,7 @@ const Routes = () => {
             <Route path="/dash" component={Dash} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
+            <Route path="/graph" component={Graph} />
         </Switch>
         </BrowserRouter>
     );

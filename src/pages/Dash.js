@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 
 import './Dash.css';
 import NCollect from './NCollect';
-// import * as ApiActions from '../store/actions';
-// <button onClick={() => dispatch(ApiActions.getCollections(feed.curNarrative))}>Clica aqui</button>
+
 import SelectBox from '../components/Select';
 
 import logo from '../assets/light/logo.svg';
@@ -34,7 +33,7 @@ const Dash = ({ feed , user, dispatch}) => (
             {feed.collections.map(collect => (
                 <article className={collect.isDone === true?'':'shadow'} key={collect.id}>
                     <div className="collect-header">
-                        <span><img className="c-icons" src={collect.collection_type === 'twitter'? twitter:media} alt="Type" /></span>
+                        <span><img className="c-icons" src={collect.collectionType === 'twitter'? twitter:media} alt="Type" /></span>
                         <strong>{collect.query}</strong>
                     </div>
                     <div className="collect-info">
