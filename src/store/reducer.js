@@ -11,8 +11,15 @@ const INITIAL_STATE = {
         collections:[],
     },
     grafo: {
-        data:{},
-        layout:{}
+        data: {
+            labels: [],
+            datasets: [{
+            label: "Empty dataset",
+            borderColor: 'rgb(255, 99, 132)',
+            data: [],
+            fill:false,
+            }]
+        }
     },
 };
 
@@ -50,7 +57,9 @@ export default function reducer(state = INITIAL_STATE, action) {
         case 'CHANGE_GRAFO':
             return {
                 ...state,
-                grafo: action.payload
+                grafo: {
+                    data: action.data,
+                }
             }
         default:
             return state;

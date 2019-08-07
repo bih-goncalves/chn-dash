@@ -56,6 +56,12 @@ function* asynChangeNarrative(action) {
     yield put({ type: 'GET_C', data: data.data });
 }
 
+// Store grafo data
+function* asyncStoreGrafo(action) {
+    
+    yield put({ type:'CHANGE_GRAFO', data:action.data });
+}
+
 export default function* rootSaga() {
     yield all([
         takeLatest('GET_COLLECTIONS', asyncGetCollections),
@@ -63,5 +69,6 @@ export default function* rootSaga() {
         takeLatest('NEW_COLLECTION', asyncNewCollection),
         takeLatest('NEW_NARRATIVE', asyncNewNarrative),
         takeLatest('CHANGE_NARRATIVE', asynChangeNarrative),
+        takeLatest('STORE_G', asyncStoreGrafo),
     ]);
 }
