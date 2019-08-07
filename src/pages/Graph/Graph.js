@@ -34,7 +34,7 @@ const Graph = ({ feed, user, grafo, dispatch}) => (
             <div className="graph-header">
                 <div className="head-left">
                     <button onClick={() => dispatch(Actions.detailed(feed.curCollection))}>Attention</button>
-                    <button>Theme</button>
+                    <button onClick={() => dispatch(Actions.theme(feed.curCollection))}>Theme</button>
                 </div>
                 <div className="head-right">
                     <a className="btn-dash">
