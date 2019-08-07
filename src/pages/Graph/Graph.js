@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Plot from 'react-plotly.js';
+import { Line } from 'react-chartjs-2';
 
 import './Graph.css';
+
+import * as Actions from '../../store/actions';
 
 import logo from '../../assets/light/logo.svg';
 import twitter from '../../assets/twitter.svg';
@@ -10,66 +12,6 @@ import media from '../../assets/satellite.svg';
 
 import SelectBox from '../../components/Select';
 import NCollect from '../NCollect';
-
-detailed = () => {
-    let json_data 
-    try {
-        let response = fetch('https://teste-chn.herokuapp.com/atention/');
-        json_data = response.json().time;
-       } catch(error) {
-        console.error(error);
-      }
-
-    var item = {
-        x: [],
-        y: [],
-        mode: 'lines+markers',
-        type: 'scatter',
-        name: 'Tweets counter',
-        text: [],
-        textposition: 'top center',
-        textfont: {
-          family:  'Raleway, sans-serif'
-        },
-        marker: { size: 8 }
-      };
-  
-    for (let i=0; i < Object.keys(json_data).length; i++) { 
-        
-        item.x.push(json_data[i].periods)
-        item.y.push(json_data[i].sizes)
-        item.text.push("P"+String(i)+' - '+json_data[i].periods)
-      }
-    var data_ = [item]
-    
-    var layout_ = { 
-        xaxis: {
-            autorange:true,
-            title:'Period'
-        },
-        yaxis: {
-            autorange:true,
-            title:'Tweets counter'
-        },
-        legend: {
-            y: 0.5,
-            yref: 'paper',
-            font: {
-            family: 'Arial, sans-serif',
-            size: 20,
-            color: 'grey',
-            }
-        },
-        title:'Tweets in numbers',
-    };
-    return {type:'CHANGE_GRAFO',
-        payload:{
-            data:data_,
-            layout:layout_
-        }
-    }
-  
-}
 
 const Graph = ({ feed, user, grafo, dispatch}) => (
     <div className="graph">
@@ -81,7 +23,7 @@ const Graph = ({ feed, user, grafo, dispatch}) => (
                 </div>
                 
                 <div className="head-right">
-                    <NCollect onSubmit={dispatch}/>
+                    <NCollect onSubmit={dispatch} runFirst={() => dispatch(Actions.detailed(feed.curCollection))}/>
                     {user.username}
                 </div>
                 
@@ -91,7 +33,7 @@ const Graph = ({ feed, user, grafo, dispatch}) => (
         <section id="graph-content">
             <div className="graph-header">
                 <div className="head-left">
-                    <button onClick={() => dispatch(detailed)}>Attention</button>
+                    <button onClick={() => dispatch(Actions.detailed(feed.curCollection))}>Attention</button>
                     <button>Theme</button>
                 </div>
                 <div className="head-right">
@@ -102,11 +44,10 @@ const Graph = ({ feed, user, grafo, dispatch}) => (
             </div>
             
             <div className="grafo">
-                <Plot data={grafo.data} layout={grafo.layout}/>
-                
+                <Line data={grafo.data} />
             </div>
         </section>
     </div>
 );
 
-export default connect(state => ({ feed: state.reducer.feed, user: state.reducer.user , grafo}))(Graph);
+export default connect(state => ({ feed: state.reducer.feed, user: state.reducer.user , grafo: state.reducer.grafo}))(Graph);

@@ -16,6 +16,7 @@
     margin:0 10px 0 30px;
     color: #555AF6;
     cursor: pointer;
+    display: inline-block;
 }
 
 header#dash-header {
