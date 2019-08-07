@@ -53,7 +53,7 @@ export function detailed(param) {
       ]
     }
 
-    export function theme(param) {
+export function theme(param) {
         const json_data = data.time;
         
         var item = {
