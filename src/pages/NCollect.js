@@ -16,7 +16,12 @@ class NCollect extends Component {
         collectionType:'twitter',
         isDone:false
     }
-
+    componentDidMount(){
+        if (typeof(this.props.runFirst) === 'function') {
+            this.props.runFirst();
+        }
+        
+    }
     showLeft = () => {
         if (this.state.show === 'none') {
             this.setState({show: 'block'})

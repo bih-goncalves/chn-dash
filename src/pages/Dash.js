@@ -5,6 +5,7 @@ import './Dash.css';
 import NCollect from './NCollect';
 
 import SelectBox from '../components/Select';
+import * as Actions from '../store/actions';
 
 import logo from '../assets/light/logo.svg';
 import twitter from '../assets/twitter.svg';
@@ -34,7 +35,7 @@ const Dash = ({ feed , user, dispatch}) => (
                 <article className={collect.isDone === true?'':'shadow'} key={collect.id}>
                     <div className="collect-header">
                         <span><img className="c-icons" src={collect.collectionType === 'twitter'? twitter:media} alt="Type" /></span>
-                        <strong>{collect.query}</strong>
+                        <strong ><a href="/graph">{collect.query}</a></strong>
                     </div>
                     <div className="collect-info">
                         <span>{collect.periodStart} - {collect.periodEnd}</span>
