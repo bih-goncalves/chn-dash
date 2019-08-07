@@ -52,6 +52,18 @@ export function detailed(param) {
         }
       ]
     }
+
+    for (let i=0; i < Object.keys(json_data).length; i++) { 
+        
+      item.datasets[0].data.push(json_data[i].sizes)
+      item.labels.push(json_data[i].periods)
+      // item.text.push("P"+String(i)+' - '+json_data[i].periods)
+    }
+    
+  return {
+      type:'CHANGE_GRAFO',
+      data:item
+  }
 }
 
 export function theme(param) {
