@@ -13,6 +13,31 @@ import media from '../../assets/satellite.svg';
 import SelectBox from '../../components/Select';
 import NCollect from '../NCollect';
 
+const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+    legend: {
+      position: 'bottom',
+      labels: {
+        boxWidth: 10
+      }
+    },
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Number of Tweets'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+            display: true,
+            labelString: 'Period of Time'
+          }
+        }]
+    }   
+  }
+
 const Graph = ({ feed, user, grafo, dispatch}) => (
     <div className="graph">
         <header id="dash-header">
@@ -33,8 +58,10 @@ const Graph = ({ feed, user, grafo, dispatch}) => (
         <section id="graph-content">
             <div className="graph-header">
                 <div className="head-left">
-                    <button onClick={() => dispatch(Actions.detailed(feed.curCollection))}>Attention</button>
-                    <button onClick={() => dispatch(Actions.theme(feed.curCollection))}>Theme</button>
+                    <button onClick={() => dispatch(Actions.detailed(feed.curCollection))}
+                    className={grafo.button === 'attention'?'btn-selected':'btn-n-selected'}>Attention</button>
+                    <button onClick={() => dispatch(Actions.theme(feed.curCollection))}
+                    className={grafo.button === 'theme'?'btn-selected':'btn-n-selected'}>Theme</button>
                 </div>
                 <div className="head-right">
                     <a className="btn-dash">
@@ -44,7 +71,7 @@ const Graph = ({ feed, user, grafo, dispatch}) => (
             </div>
             
             <div className="grafo">
-                <Line data={grafo.data} />
+                <Line data={grafo.data} height={430} width={900} options={options}/>
             </div>
         </section>
     </div>

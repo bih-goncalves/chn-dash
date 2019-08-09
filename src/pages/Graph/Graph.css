@@ -37,14 +37,24 @@ section#graph-content {
     margin-bottom: 20px;
 }
 
-.graph-header button {
+.btn-n-selected {
     background: transparent;
     border: none;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 15px 5px 15px;
+    font-size: 14px;
+}
+.btn-selected {
+    background: #E5E0F7;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
 }
 
 .grafo {
     width: 100%;
     height: auto;
     background: #fff;
+    padding: 0;
 }

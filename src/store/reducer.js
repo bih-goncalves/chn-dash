@@ -11,6 +11,7 @@ const INITIAL_STATE = {
         collections:[],
     },
     grafo: {
+        button:'attention',
         data: {
             labels: [],
             datasets: [{
@@ -59,6 +60,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 grafo: {
                     data: action.data,
+                    button:action.button,
                 }
             }
         default:

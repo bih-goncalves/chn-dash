@@ -2,9 +2,10 @@
 import * as jsonF from '../test/psychedelics.json';
 
 function dynamicColors() {
-  var r = Math.floor(Math.random() * 255);
-  var g = Math.floor(Math.random() * 255);
+  var r = Math.floor(Math.random() * 100);
+  var g = Math.floor(Math.random() * 150);
   var b = Math.floor(Math.random() * 255);
+  
   return "rgba(" + r + "," + g + "," + b + ", 0.5)";
 }
 
@@ -35,26 +36,26 @@ export function detailed(param) {
     
     var item = {
         labels: [],
-      datasets: [
+        datasets: [
         {
-          label: "Tweets in numbers",
+          label: 'Full Dataset',
           fill: false,
           lineTension: 0.3,
-          backgroundColor: "rgba(225, 204,230, .3)",
-          borderColor: "rgb(205, 130, 158)",
+          borderColor: "rgb(0, 52, 98)",
           borderCapStyle: "butt",
           borderDash: [],
           borderDashOffset: 0.0,
           borderJoinStyle: "miter",
+          borderWidth:2.5,
           pointBorderColor: "rgb(205, 130,1 58)",
           pointBackgroundColor: "rgb(255, 255, 255)",
-          pointBorderWidth: 5,
-          pointHoverRadius: 3,
+          pointBorderWidth: 3,
+          pointHoverRadius: 2,
           pointHoverBackgroundColor: "rgb(0, 0, 0)",
           pointHoverBorderColor: "rgba(220, 220, 220,1)",
           pointHoverBorderWidth: 2,
           pointRadius: 1,
-          pointHitRadius: 5,
+          pointHitRadius: 3,
           data: []
         }
       ]
@@ -69,15 +70,15 @@ export function detailed(param) {
     
   return {
       type:'CHANGE_GRAFO',
-      data:item
+      data:item,
+      button:'attention'
   }
 }
 
 export function theme(param) {
     const json_data = jsonF.matches;
-    console.log('oi');
     var data = {
-      datasets: []
+      datasets: [],
     }
     
     for (var key in json_data) {
@@ -90,15 +91,16 @@ export function theme(param) {
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: "miter",
+            borderWidth:2.5,
             pointBorderColor: "rgb(205, 130,1 58)",
             pointBackgroundColor: "rgb(255, 255, 255)",
-            pointBorderWidth: 5,
-            pointHoverRadius: 3,
+            pointBorderWidth: 3,
+            pointHoverRadius: 2,
             pointHoverBackgroundColor: "rgb(0, 0, 0)",
             pointHoverBorderColor: "rgba(220, 220, 220,1)",
             pointHoverBorderWidth: 2,
             pointRadius: 1,
-            pointHitRadius: 5,
+            pointHitRadius: 3,
             data: []
           }
 
@@ -113,7 +115,8 @@ export function theme(param) {
         
     return {
         type:'CHANGE_GRAFO',
-        data:data
+        data:data,
+        button:'theme'
     }
   
 }
