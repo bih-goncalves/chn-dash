@@ -2,11 +2,23 @@
 import * as jsonF from '../test/psychedelics.json';
 
 function dynamicColors() {
-  var r = Math.floor(Math.random() * 100);
-  var g = Math.floor(Math.random() * 150);
-  var b = Math.floor(Math.random() * 255);
+  var num = Math.floor(Math.random() * 6);
+  var chartColors =[
+    'rgb(255, 99, 132)', //red: 
+    'rgb(255, 159, 64)', //orange: 
+    'rgb(255, 205, 86)', //yellow: 
+    'rgb(75, 192, 192)', //green: 
+    'rgb(54, 162, 235)', //blue: 
+    'rgb(153, 102, 255)', //purple: 
+    'rgb(231,233,237)' //grey: 
+  ];
+
+  // var r = Math.floor(Math.random() * 100);
+  // var g = Math.floor(Math.random() * 150);
+  // var b = Math.floor(Math.random() * 255);
   
-  return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+  //return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+  return chartColors[num];
 }
 
 export function getCollections (narrative) {
