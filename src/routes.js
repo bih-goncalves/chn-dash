@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 // Redirect
 // import { isAuthenticated } from "./services/auth";
 import Main from './pages/Main';
@@ -26,8 +26,9 @@ const Routes = () => {
     return(
         <BrowserRouter>
         <Switch>
-            <Route path="/" exact component={Main} />
-            <Route path="/dash" component={Dash} />
+            {/* <Route path="/" exact component={Main} /> */}
+            <Redirect exact from="/" to="/graph" />
+            {/* <Route path="/dash" component={Dash} /> */}
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/graph" component={Graph} />
